@@ -1,0 +1,103 @@
+{
+  "name": "custom-smart-file-combiner",
+  "displayName": "Custom Smart File Combiner",
+  "description": "Combine multiple source files and folders into a single .txt for documentation, review, or AI ingestion with configurable ignore patterns.",
+  "version": "1.0.0",
+  "publisher": "Giuliano Lemes",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "homepage": "https://github.com/giuice/custom-smart-file-combiner/blob/main/README.md",
+  "bugs": {
+    "url": "https://github.com/giuice/custom-smart-file-combiner/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/giuice/custom-smart-file-combiner.git"
+  },
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Other",
+    "Programming Languages",
+    "Formatters",
+    "Snippets"
+  ],
+  "keywords": [
+    "combine files",
+    "merge code",
+    "text bundler",
+    "file exporter",
+    "folder flattener",
+    "generate doc from code",
+    "extract js",
+    "typescript",
+    "env file formatter"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "custom.extension.combineFiles",
+        "title": "Custom Combine Files/Folders into TXT"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "custom.extension.combineFiles",
+          "when": "explorerResourceIsFolder || explorerResourceIsFile",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Custom Smart File Combiner",
+      "properties": {
+        "customSmartFileCombiner.ignoreFiles": {
+          "type": "array",
+          "default": [],
+          "description": "Additional file names to ignore when combining files."
+        },
+        "customSmartFileCombiner.ignorePatterns": {
+          "type": "array",
+          "default": [],
+          "description": "Additional file patterns (regex) to ignore when combining files."
+        },
+        "customSmartFileCombiner.ignoreFolders": {
+          "type": "array",
+          "default": [],
+          "description": "Additional folder names to ignore when combining files."
+        }
+      }
+    }
+  },
+  "activationEvents": [
+    "onCommand:custom.extension.combineFiles"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test",
+    "package": "node package-extension.js"
+  },
+  "devDependencies": {
+    "@types/minimatch": "^5.1.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.101.0",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "minimatch": "^10.0.3"
+  }
+}

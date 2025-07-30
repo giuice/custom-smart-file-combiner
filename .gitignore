@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+
+# Package files
+*.vsix
+
+# Ignore compiled output except for the out directory in development
+# out/
+# !out/**
+
+# Uncomment the following lines if you want to ignore the out directory
+# dist/
